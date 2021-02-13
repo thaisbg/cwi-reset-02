@@ -2,19 +2,19 @@ package Exercicio01OO;
 
 public class Calculadora {
 
-    public int soma(int x, int y) {
+    public double soma(double x, double y) {
         return x + y;
     }
 
-    public int subtrai(int x, int y) {
+    public double subtrai(double x, double y) {
         return x - y;
     }
 
-    public int multiplica(int x, int y) {
+    public double multiplica(double x, double y) {
         return x * y;
     }
 
-    public int divide(int x, int y) {
+    public double divide(double x, double y) {
         return x / y;
     }
 

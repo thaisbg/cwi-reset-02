@@ -2,18 +2,21 @@ package Exercicio01OO;
 
 public class Aplicacao {
 
+    double x = 14;
+    double y = 2;
+
     public static void main(String[] args) {
         Calculadora calculadora = new Calculadora();
-        int resultadoSoma = calculadora.soma(5, 8);
+        double resultadoSoma = calculadora.soma(6.7, 43.6);
         System.out.println("Resultado da soma: " + resultadoSoma);
 
-        int resultadoSubtrai = calculadora.subtrai(12, 6);
+        double resultadoSubtrai = calculadora.subtrai(6.7, 43.6);
         System.out.println("Resultado da subtração: " + resultadoSubtrai);
 
-        int resultadoMultiplica = calculadora.multiplica(5, 3);
+        double resultadoMultiplica = calculadora.multiplica(6.7, 43.6);
         System.out.println("Resultado da multiplicação: " + resultadoMultiplica);
 
-        int resultadoDivide = calculadora.divide(14, 2);
+        double resultadoDivide = calculadora.divide(6.7, 43.6);
         System.out.println("Resultado da divisão: " + resultadoDivide);
     }
 }
