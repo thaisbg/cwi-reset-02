@@ -1,4 +1,4 @@
-package dadosFilme;
+package exercicioFilmes;
 
 public class Filme {
     private String nome;
@@ -21,9 +21,10 @@ public class Filme {
         System.out.println("Título: " + this.nome);
         System.out.println("Descrição: " + this.descricao);
         System.out.println("Duração: " + this.duracao + " minutos");
-        System.out.println("Diretor: " + this.diretor.getNomeDiretor());
+        System.out.println("Diretor: " + this.diretor.getNome());
         System.out.println("");
     }
 }
+
 
 

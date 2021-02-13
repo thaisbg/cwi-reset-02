@@ -1,19 +1,18 @@
-package dadosFilme;
+package exercicioFilmes;
 
 public class Diretor {
-    private String nomeDiretor;
+    private String nome;
     private int idade;
     private int quantidadeFilmes;
 
-    public Diretor(String nomeDiretor, int idade, int quantidadeFilmes) {
-        this.nomeDiretor = nomeDiretor;
+    public Diretor(String nome, int idade, int quantidadeFilmes) {
+        this.nome = nome;
         this.idade = idade;
         this.quantidadeFilmes = quantidadeFilmes;
     }
 
-
-    public String getNomeDiretor() {
-        return nomeDiretor;
+    public String getNome() {
+        return nome;
     }
 
     public int getIdade() {
@@ -24,5 +23,3 @@ public class Diretor {
         return quantidadeFilmes;
     }
 }
-
-
