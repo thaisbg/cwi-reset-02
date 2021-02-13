@@ -1,25 +1,15 @@
 package exercicioFilmes;
 
-public class Diretor {
-    private String nome;
-    private int idade;
+public class Diretor extends Artista {
     private int quantidadeFilmes;
 
-    public Diretor(String nome, int idade, int quantidadeFilmes) {
-        this.nome = nome;
-        this.idade = idade;
+    public Diretor(String nome, int idade, Genero genero, int quantidadeFilmes) {
+        super(nome, idade, genero);
         this.quantidadeFilmes = quantidadeFilmes;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public int getIdade() {
-        return idade;
     }
 
     public int getQuantidadeFilmes() {
         return quantidadeFilmes;
     }
+
 }
