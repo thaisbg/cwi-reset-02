@@ -6,10 +6,6 @@ public class Casa extends Imovel {
         this.patio = patio;
     }
 
-    public String getPatio() {
-        return patio;
-    }
-
     public String apresentacao() {
         return super.apresentacao() + "Tipo: casa. Pátio: " + patio;
     }

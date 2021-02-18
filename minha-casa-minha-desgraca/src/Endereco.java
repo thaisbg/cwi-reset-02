@@ -23,14 +23,6 @@ public class Endereco {
         return numero;
     }
 
-    public String getComplemento() {
-        return complemento;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
     public String getCidade() {
         return cidade;
     }
