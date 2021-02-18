@@ -8,8 +8,4 @@ public class Ator extends Artista {
         this.numeroOscars = numeroOscars;
     }
 
-    public int getNumeroOscars() {
-        return numeroOscars;
-    }
-
 }

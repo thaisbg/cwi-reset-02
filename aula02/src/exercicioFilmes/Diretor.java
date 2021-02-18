@@ -8,8 +8,4 @@ public class Diretor extends Artista {
         this.quantidadeFilmes = quantidadeFilmes;
     }
 
-    public int getQuantidadeFilmes() {
-        return quantidadeFilmes;
-    }
-
 }

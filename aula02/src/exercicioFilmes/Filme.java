@@ -13,8 +13,10 @@ public class Filme {
         this.descricao = descricao;
         this.duracao = duracao;
         this.anoLancamento = anoLancamento;
-        this.avaliacao = avaliacao;
         this.diretor = diretor;
+
+        validarAvaliacao(avaliacao);
+        validarNomeAvaliacao(nome);
     }
 
     public void reproduzir() {
@@ -22,6 +24,26 @@ public class Filme {
         System.out.println("Descrição: " + this.descricao);
         System.out.println("Duração: " + this.duracao + " minutos");
         System.out.println("Diretor: " + this.diretor.getNome());
+    }
+
+    public void validarAvaliacao(int avaliacao) {
+        if ((avaliacao < 1) || (avaliacao > 5)) {
+            this.avaliacao = 3;
+        } else {
+            this.avaliacao = avaliacao;
+        }
+    }
+
+    private void validarNomeAvaliacao(String nome) {
+        if (nome.equals("Batman vs Superman")) {
+            this.avaliacao = 1;
+        } else if (nome.equals("O Clube da Luta")) {
+            this.avaliacao = 5;
+        }
+    }
+
+    public int getAvaliacao() {
+        return avaliacao;
     }
 }
 
