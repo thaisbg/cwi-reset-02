@@ -7,13 +7,15 @@ public class Filme {
     private int anoLancamento;
     private int avaliacao;
     private Diretor diretor;
+    private ArrayList elenco;
 
-    public Filme(String nome, String descricao, int duracao, int anoLancamento, int avaliacao, Diretor diretor) {
+    public Filme(String nome, String descricao, int duracao, int anoLancamento, int avaliacao, Diretor diretor, ArrayList elenco) {
         this.nome = nome;
         this.descricao = descricao;
         this.duracao = duracao;
         this.anoLancamento = anoLancamento;
         this.diretor = diretor;
+        this.elenco = elenco;
 
         validarAvaliacao(avaliacao);
         validarNomeAvaliacao(nome);
@@ -40,6 +42,10 @@ public class Filme {
         } else if (nome.equals("O Clube da Luta")) {
             this.avaliacao = 5;
         }
+    }
+
+    public void exibirCreditos() {
+        System.out.println(ator1)
     }
 
     public int getAvaliacao() {
