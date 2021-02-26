@@ -1,8 +1,10 @@
 package br.com.banco.desgraca.domain.conta;
 
+import br.com.banco.desgraca.Data;
 import br.com.banco.desgraca.domain.InstituicaoBancaria;
 import br.com.banco.desgraca.domain.TipoTransacao;
 import br.com.banco.desgraca.domain.Transacao;
+import br.com.banco.desgraca.exception.DatasInvalidasException;
 import br.com.banco.desgraca.exception.SaldoInsuficienteException;
 
 import java.text.DecimalFormat;
@@ -54,9 +56,32 @@ public abstract class ContaBancariaAbstrata implements ContaBancaria {
         System.out.println("\n-------------------------------------------");
         System.out.println("Extrato da conta " + toString());
         System.out.println("-------------------------------------------");
-        for (Transacao transacao : transacoes)
-            transacao.exibirTransacoes();
-        System.out.println("Saldo: " + DecimalFormat.getCurrencyInstance().format(saldo));
+
+        if ((inicio == null) && (fim == null)) {
+            for (Transacao transacao : transacoes) {
+                transacao.exibirTransacoes();
+            }
+        } else if ((inicio == null) && (fim != null)) {
+            for (Transacao transacao : transacoes) {
+                if (transacao.getData().isBefore(fim)) {
+                    transacao.exibirTransacoes();
+                }
+            }
+        } else if ((inicio != null) && (fim == null)) {
+            for (Transacao transacao : transacoes) {
+                if (transacao.getData().isAfter(inicio)) {
+                    transacao.exibirTransacoes();
+                }
+            }
+        } else if ((inicio != null) && (fim != null)) {
+            for (Transacao transacao : transacoes) {
+                if ((transacao.getData().isAfter(inicio)) && (transacao.getData().isBefore(fim))) {
+                    transacao.exibirTransacoes();
+                }
+            }
+        }
+
+        System.out.println("Saldo atual: " + DecimalFormat.getCurrencyInstance().format(saldo));
         System.out.println("-------------------------------------------\n");
     }
 

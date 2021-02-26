@@ -5,6 +5,9 @@ import br.com.banco.desgraca.domain.conta.ContaCorrente;
 import br.com.banco.desgraca.domain.conta.ContaDigital;
 import br.com.banco.desgraca.domain.conta.ContaPoupanca;
 
+import javax.print.attribute.standard.Finishings;
+import java.time.LocalDate;
+
 public class BancoDaDesgraca {
 
     public static void main(String[] args) throws Exception {
@@ -28,10 +31,13 @@ public class BancoDaDesgraca {
 
         ContaPoupanca testePoupanca = new ContaPoupanca(InstituicaoBancaria.BRADESCO, 432);
         testePoupanca.depositar(900.0);
-        testePoupanca.sacar(90.0);
-        testePoupanca.transferir(50.0, contaTeste); // teste transferência para outro banco
-        testePoupanca.transferir(90.0, contaTeste3); // teste transferência para mesmo banco
-        testePoupanca.exibirExtrato(null, null);
+        testePoupanca.sacar(50.0);
+        testePoupanca.transferir(60.0, contaTeste); // teste transferência para outro banco
+        testePoupanca.transferir(70.0, contaTeste3); // teste transferência para mesmo banco
+        testePoupanca.exibirExtrato(null,null);
+        testePoupanca.exibirExtrato(null, LocalDate.of(2020,9,24));
+        testePoupanca.exibirExtrato(LocalDate.of(2020, 8, 5), null);
+        testePoupanca.exibirExtrato(LocalDate.of(2020, 8, 5), LocalDate.of(2020, 8, 15));
 
 //        ContaPoupanca testeExceptionConta = new ContaPoupanca(InstituicaoBancaria.NUBANK, 545);
 //        testeExceptionConta.depositar(45.00);

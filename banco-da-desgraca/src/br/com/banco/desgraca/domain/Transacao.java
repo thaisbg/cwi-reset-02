@@ -23,7 +23,10 @@ public class Transacao {
         if (tipoTransacao.equals(TipoTransacao.TRANSFERIR) || tipoTransacao.equals(TipoTransacao.SACAR)) {
             simboloEntradaSaida = '-';
         }
-        System.out.println(simboloEntradaSaida + " " + valorFormatado + " " + getDataTransacao().format(DateTimeFormatter.ofPattern("dd-MM-yy")));
+        System.out.println(simboloEntradaSaida + " " + valorFormatado + " " + data.format(DateTimeFormatter.ofPattern("dd-MM-yy")));
     }
 
+    public LocalDate getData() {
+        return data;
+    }
 }
