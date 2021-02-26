@@ -35,7 +35,7 @@ public class BancoDaDesgraca {
         testePoupanca.transferir(60.0, contaTeste); // teste transferência para outro banco
         testePoupanca.transferir(70.0, contaTeste3); // teste transferência para mesmo banco
         testePoupanca.exibirExtrato(null,null);
-        testePoupanca.exibirExtrato(null, LocalDate.of(2020,9,24));
+        testePoupanca.exibirExtrato(null, LocalDate.of(2020,8,14));
         testePoupanca.exibirExtrato(LocalDate.of(2020, 8, 5), null);
         testePoupanca.exibirExtrato(LocalDate.of(2020, 8, 5), LocalDate.of(2020, 8, 15));
 

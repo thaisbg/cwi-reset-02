@@ -1,6 +1,5 @@
 package br.com.banco.desgraca.domain.conta;
 
-import br.com.banco.desgraca.Data;
 import br.com.banco.desgraca.domain.InstituicaoBancaria;
 import br.com.banco.desgraca.domain.TipoTransacao;
 import br.com.banco.desgraca.domain.Transacao;
@@ -57,27 +56,29 @@ public abstract class ContaBancariaAbstrata implements ContaBancaria {
         System.out.println("Extrato da conta " + toString());
         System.out.println("-------------------------------------------");
 
-        if ((inicio == null) && (fim == null)) {
+        if ((inicio != null) && (fim != null)) {
             for (Transacao transacao : transacoes) {
-                transacao.exibirTransacoes();
+                if ((transacao.getData().isAfter(inicio)) && (transacao.getData().isBefore(fim))) {
+                    transacao.exibirTransacoes();
+                } else if (inicio.isBefore(fim)) {
+                    throw new DatasInvalidasException("A data de início deve ser anterior à data de fim");
+                }
             }
-        } else if ((inicio == null) && (fim != null)) {
+        } else if (fim != null) {
             for (Transacao transacao : transacoes) {
                 if (transacao.getData().isBefore(fim)) {
                     transacao.exibirTransacoes();
                 }
             }
-        } else if ((inicio != null) && (fim == null)) {
+        } else if (inicio != null) {
             for (Transacao transacao : transacoes) {
                 if (transacao.getData().isAfter(inicio)) {
                     transacao.exibirTransacoes();
                 }
             }
-        } else if ((inicio != null) && (fim != null)) {
+        } else {
             for (Transacao transacao : transacoes) {
-                if ((transacao.getData().isAfter(inicio)) && (transacao.getData().isBefore(fim))) {
-                    transacao.exibirTransacoes();
-                }
+                transacao.exibirTransacoes();
             }
         }
 
