@@ -57,13 +57,16 @@ public abstract class ContaBancariaAbstrata implements ContaBancaria {
         System.out.println("-------------------------------------------");
 
         if ((inicio != null) && (fim != null)) {
-            for (Transacao transacao : transacoes) {
-                if ((transacao.getData().isAfter(inicio)) && (transacao.getData().isBefore(fim))) {
-                    transacao.exibirTransacoes();
-                } else if (inicio.isBefore(fim)) {
-                    throw new DatasInvalidasException("A data de início deve ser anterior à data de fim");
+            if (fim.isBefore(inicio)) {
+                throw new DatasInvalidasException("A data de início deve ser anterior à data de fim");
+            } else {
+                for (Transacao transacao : transacoes) {
+                    if ((transacao.getData().isAfter(inicio)) && (transacao.getData().isBefore(fim))) {
+                        transacao.exibirTransacoes();
+                    }
                 }
             }
+
         } else if (fim != null) {
             for (Transacao transacao : transacoes) {
                 if (transacao.getData().isBefore(fim)) {

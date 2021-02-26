@@ -5,7 +5,6 @@ import br.com.banco.desgraca.domain.conta.ContaCorrente;
 import br.com.banco.desgraca.domain.conta.ContaDigital;
 import br.com.banco.desgraca.domain.conta.ContaPoupanca;
 
-import javax.print.attribute.standard.Finishings;
 import java.time.LocalDate;
 
 public class BancoDaDesgraca {
@@ -38,6 +37,9 @@ public class BancoDaDesgraca {
         testePoupanca.exibirExtrato(null, LocalDate.of(2020,8,14));
         testePoupanca.exibirExtrato(LocalDate.of(2020, 8, 5), null);
         testePoupanca.exibirExtrato(LocalDate.of(2020, 8, 5), LocalDate.of(2020, 8, 15));
+//        testePoupanca.exibirExtrato(LocalDate.of(2020, 10, 5), LocalDate.of(2020,9,4));
+
+        contaTeste3.exibirExtrato(null,null);
 
 //        ContaPoupanca testeExceptionConta = new ContaPoupanca(InstituicaoBancaria.NUBANK, 545);
 //        testeExceptionConta.depositar(45.00);
