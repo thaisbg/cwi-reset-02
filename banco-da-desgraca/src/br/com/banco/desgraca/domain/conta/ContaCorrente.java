@@ -28,5 +28,6 @@ public class ContaCorrente extends ContaBancariaAbstrata {
         setSaldo(super.getSaldo() - valor - taxa);
         finalizarTransacao(valor, TipoTransacao.TRANSFERIR);
         imprimirTaxas(taxa, TipoTransacao.TRANSFERIR);
+        contaDestino.depositar(valor);
     }
 }

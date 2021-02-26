@@ -48,6 +48,7 @@ public abstract class ContaBancariaAbstrata implements ContaBancaria {
         validarSaida(valor);
         saldo -= valor;
         finalizarTransacao(valor, TipoTransacao.TRANSFERIR);
+        contaDestino.depositar(valor);
     }
 
     @Override

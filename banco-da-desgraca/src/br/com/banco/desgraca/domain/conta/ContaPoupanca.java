@@ -34,6 +34,7 @@ public class ContaPoupanca extends ContaBancariaAbstrata{
         setSaldo(super.getSaldo() - valor - taxa);
         finalizarTransacao(valor,TipoTransacao.TRANSFERIR);
         imprimirTaxas(taxa, TipoTransacao.TRANSFERIR);
+        contaDestino.depositar(valor);
     }
 
     private void validarInstituicao() {

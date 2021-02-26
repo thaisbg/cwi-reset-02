@@ -39,6 +39,7 @@ public class BancoDaDesgraca {
         testePoupanca.exibirExtrato(LocalDate.of(2020, 8, 5), LocalDate.of(2020, 8, 15));
 //        testePoupanca.exibirExtrato(LocalDate.of(2020, 10, 5), LocalDate.of(2020,9,4));
 
+        contaTeste.exibirExtrato(null,null);
         contaTeste3.exibirExtrato(null,null);
 
 //        ContaPoupanca testeExceptionConta = new ContaPoupanca(InstituicaoBancaria.NUBANK, 545);
