@@ -22,13 +22,11 @@ public class PropostaFinanciamento {
 
     public void validarProposta() {
 
-        double porcentagemDoValorImovel = 0;
+        double porcentagemDoValorImovel = 0.5;
         if (imovelEscolhido.getEndereco().getEstado() == UnidadeFederativa.SP) {
             porcentagemDoValorImovel = 0.65;
         } else if (imovelEscolhido.getEndereco().getEstado() == UnidadeFederativa.RJ) {
             porcentagemDoValorImovel = 0.6;
-        } else {
-            porcentagemDoValorImovel = 0.5;
         }
 
         boolean criterio = (beneficiario.getSalario() * mesesParaPagamento) >= (imovelEscolhido.getValor() * porcentagemDoValorImovel);
@@ -42,18 +40,18 @@ public class PropostaFinanciamento {
 
     }
 
-    public void dadosProposta() {
+    private void dadosProposta() {
         System.out.println("Beneficiário: " + beneficiario.getNome());
         System.out.println(imovelEscolhido.apresentacao());
         System.out.println("Prazo: " + mesesParaPagamento + " meses");
     }
 
-    public void imprimirPropostaAprovada() {
+    private void imprimirPropostaAprovada() {
         dadosProposta();
         System.out.println("Parabéns, sua proposta foi aceita!");
     }
 
-    public void imprimirPropostaNegada() {
+    private void imprimirPropostaNegada() {
         dadosProposta();
         System.out.println("Proposta negada!");
     }

@@ -1,4 +1,4 @@
-package exercicioFilmes;
+import java.util.List;
 
 public class Filme {
     private String nome;
@@ -7,15 +7,16 @@ public class Filme {
     private int anoLancamento;
     private int avaliacao;
     private Diretor diretor;
-    private ArrayList elenco;
+    private List<Artista> artistas;
 
-    public Filme(String nome, String descricao, int duracao, int anoLancamento, int avaliacao, Diretor diretor, ArrayList elenco) {
+
+    public Filme(String nome, String descricao, int duracao, int anoLancamento, int avaliacao, Diretor diretor, List artistas) {
         this.nome = nome;
         this.descricao = descricao;
         this.duracao = duracao;
         this.anoLancamento = anoLancamento;
         this.diretor = diretor;
-        this.elenco = elenco;
+        this.artistas = artistas;
 
         validarAvaliacao(avaliacao);
         validarNomeAvaliacao(nome);
@@ -41,16 +42,22 @@ public class Filme {
             this.avaliacao = 1;
         } else if (nome.equals("O Clube da Luta")) {
             this.avaliacao = 5;
+
         }
     }
 
     public void exibirCreditos() {
-        System.out.println(ator1)
+        System.out.println("Créditos:");
+        for (Artista artista : artistas) {
+            artista.exibirInformacoes();
+        }
     }
 
     public int getAvaliacao() {
         return avaliacao;
     }
+
+
 }
 
 

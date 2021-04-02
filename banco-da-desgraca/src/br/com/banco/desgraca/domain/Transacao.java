@@ -1,5 +1,7 @@
 package br.com.banco.desgraca.domain;
 
+import br.com.banco.desgraca.Data;
+
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -11,9 +13,9 @@ public class Transacao {
     private LocalDate data;
     private double valor;
 
-    public Transacao(TipoTransacao tipoTransacao, LocalDate data, double valor) {
+    public Transacao(TipoTransacao tipoTransacao, double valor) {
         this.tipoTransacao = tipoTransacao;
-        this.data = data;
+        this.data = Data.getDataTransacao();
         this.valor = valor;
     }
 

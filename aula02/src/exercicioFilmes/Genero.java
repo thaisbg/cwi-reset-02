@@ -1,5 +1,3 @@
-package exercicioFilmes;
-
 public enum Genero {
     MASCULINO("Masculino"),
     FEMININO("Feminino"),

@@ -9,18 +9,22 @@ import br.com.banco.desgraca.exception.SaldoInsuficienteException;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Random;
+
 import static br.com.banco.desgraca.Data.getDataTransacao;
 
-public abstract class ContaBancariaAbstrata implements ContaBancaria {
+abstract class ContaBancariaAbstrata implements ContaBancaria {
+
     private InstituicaoBancaria instituicaoBancaria;
-    private int numero;
-    private double saldo;
+    private String numero;
+    private Double saldo;
 
     ArrayList<Transacao> transacoes= new ArrayList();
 
-    public ContaBancariaAbstrata(InstituicaoBancaria instituicaoBancaria, int numero) {
+    ContaBancariaAbstrata(InstituicaoBancaria instituicaoBancaria) {
         this.instituicaoBancaria = instituicaoBancaria;
-        this.numero = numero;
+        this.numero = gerarNumeroConta();
+        this.saldo = 0.0;
     }
 
     // ------------------ MÉTODOS DE TRANSAÇÕES ------------------
@@ -67,7 +71,6 @@ public abstract class ContaBancariaAbstrata implements ContaBancaria {
                     }
                 }
             }
-
         } else if (fim != null) {
             for (Transacao transacao : transacoes) {
                 if (transacao.getData().isBefore(fim)) {
@@ -85,39 +88,42 @@ public abstract class ContaBancariaAbstrata implements ContaBancaria {
                 transacao.exibirTransacoes();
             }
         }
-
         System.out.println("Saldo atual: " + DecimalFormat.getCurrencyInstance().format(saldo));
         System.out.println("-------------------------------------------\n");
     }
 
     // ------------------ MÉTODOS AUXILIARES ------------------
 
-    protected String formatarValor(double valor) {
+    protected String formatarValor(Double valor) {
         return DecimalFormat.getCurrencyInstance().format(valor);
     }
 
-    protected void finalizarTransacao(double valor, TipoTransacao tipo) {
+    protected void finalizarTransacao(Double valor, TipoTransacao tipo) {
         String preposicao = "da";
         if (tipo.equals(TipoTransacao.DEPOSITAR)) {
             preposicao = "na";
         }
         System.out.println(tipo.getDescricao() + " no valor de " + formatarValor(valor) + " " + preposicao + " conta " + toString());
-        transacoes.add(new Transacao(tipo, getDataTransacao(), valor));
+        transacoes.add(new Transacao(tipo, valor));
     }
 
-    protected void validarSaida(double valor) {
-        if (valor > getSaldo()) {
+    protected void validarSaida(Double valor) {
+        if (valor > saldo) {
             throw new SaldoInsuficienteException("Você não tem saldo suficiente para esta transação.");
         }
     }
 
-    protected void imprimirTaxas(double taxa, TipoTransacao tipo) {
+    protected void imprimirTaxas(Double taxa, TipoTransacao tipo) {
         System.out.println("Taxa de " + tipo.getDescricao() + ": " + formatarValor(taxa));
     }
 
     @Override
     public String toString() {
         return instituicaoBancaria.getDescricao() + " " + numero;
+    }
+
+    private String gerarNumeroConta() {
+        return String.format("%s-%s", new Random().nextInt(99999) + 1, new Random().nextInt(+9) + 1);
     }
 
 
@@ -128,11 +134,11 @@ public abstract class ContaBancariaAbstrata implements ContaBancaria {
         return instituicaoBancaria;
     }
 
-    public double getSaldo() {
+    public Double getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(double saldo) {
+    public void setSaldo(Double saldo) {
         this.saldo = saldo;
     }
 

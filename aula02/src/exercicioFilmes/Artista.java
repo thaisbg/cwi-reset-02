@@ -1,19 +1,26 @@
-package exercicioFilmes;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.Period;
 
 public class Artista {
     private String nome;
-    private int idade;
     private Genero genero;
+    private LocalDate nascimento;
 
-    public Artista(String nome, int idade, Genero genero) {
+    public Artista(String nome, LocalDate nascimento, Genero genero) {
         this.nome = nome;
-        this.idade = idade;
+        this.nascimento = nascimento;
         this.genero = genero;
+    }
+
+    private int idade (LocalDate nascimento) {
+        Period idade = Period.between(nascimento, LocalDate.now());
+        return idade.getYears();
     }
 
     public void exibirInformacoes() {
         System.out.println("Nome: " + this.nome);
-        System.out.println("Idade: " + this.idade);
+        System.out.println("Idade: " + idade(nascimento));
         System.out.println("Gênero: " + this.genero.getDescricao());
     }
 

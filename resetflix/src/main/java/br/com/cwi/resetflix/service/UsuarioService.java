@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class UsuarioService {
@@ -23,6 +24,11 @@ public class UsuarioService {
         List<FilmeEntity> filmesAssistidos = new ArrayList<>();
         filmesAssistidos.add(filmeParaAssistir);
         return filmeParaAssistir.getId();
+    }
+
+    public Set<FilmeEntity> consultarHistorico() {
+        Set<FilmeEntity> filmesAssistidos = usuarioRepository.consultaHistorico();
+        return filmesAssistidos;
     }
 
 }

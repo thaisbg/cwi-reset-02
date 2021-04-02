@@ -1,10 +1,5 @@
 package br.com.cwi.resetflix.entity;
 
-import br.com.cwi.resetflix.response.FilmesResponse;
-import br.com.cwi.resetflix.response.SeriesResponse;
-
-import java.util.*;
-
 public class UsuarioEntity {
 
     private String username = "usuario_teste";

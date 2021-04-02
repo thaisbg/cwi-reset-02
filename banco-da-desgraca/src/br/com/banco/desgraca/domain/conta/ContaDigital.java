@@ -5,17 +5,17 @@ import br.com.banco.desgraca.exception.InstituicaoInvalidaException;
 import br.com.banco.desgraca.exception.ValorSaqueInvalidoException;
 
 public class ContaDigital extends ContaBancariaAbstrata {
-    public ContaDigital(InstituicaoBancaria instituicaoBancaria, int numero) {
-        super(instituicaoBancaria, numero);
+    public ContaDigital(InstituicaoBancaria instituicaoBancaria) {
+        super(instituicaoBancaria);
         validarInstituicao();
     }
 
     @Override
     public void sacar(Double valor) {
-        super.sacar(valor);
         if (valor < 10) {
             throw new ValorSaqueInvalidoException("Saque mínimo: R$10.00");
         }
+        super.sacar(valor);
     }
 
     private void validarInstituicao() {

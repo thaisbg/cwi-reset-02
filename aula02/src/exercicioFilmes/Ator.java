@@ -1,11 +1,16 @@
-package exercicioFilmes;
+import java.time.LocalDate;
 
 public class Ator extends Artista {
     private int numeroOscars;
 
-    public Ator(String nome, int idade, Genero genero, int numeroOscars) {
-        super(nome, idade, genero);
+    public Ator(String nome, LocalDate nascimento, Genero genero, int numeroOscars) {
+        super(nome, nascimento, genero);
         this.numeroOscars = numeroOscars;
+    }
+
+    public void exibirInformacoes() {
+        super.exibirInformacoes();
+        System.out.println("Quantidade de Oscars: " + numeroOscars);
     }
 
 }

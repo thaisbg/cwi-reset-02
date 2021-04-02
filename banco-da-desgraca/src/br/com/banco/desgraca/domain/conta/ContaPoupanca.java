@@ -6,8 +6,8 @@ import br.com.banco.desgraca.exception.InstituicaoInvalidaException;
 import br.com.banco.desgraca.exception.ValorSaqueInvalidoException;
 
 public class ContaPoupanca extends ContaBancariaAbstrata{
-    public ContaPoupanca(InstituicaoBancaria instituicaoBancaria, int numero) {
-        super(instituicaoBancaria, numero);
+    public ContaPoupanca(InstituicaoBancaria instituicaoBancaria) {
+        super(instituicaoBancaria);
         validarInstituicao();
     }
 
@@ -17,9 +17,9 @@ public class ContaPoupanca extends ContaBancariaAbstrata{
         if (valor < 50) {
             throw new ValorSaqueInvalidoException("Saque mínimo: R$50.00");
         } else {
-            double taxa = valor * 0.02;
-            setSaldo(super.getSaldo() - valor - taxa);
-            finalizarTransacao(valor, TipoTransacao.SACAR);
+            Double taxa = valor * 0.02;
+            finalizarTransacao(valor+taxa, TipoTransacao.SACAR);
+            setSaldo(this.getSaldo() - valor - taxa);
             imprimirTaxas(taxa, TipoTransacao.SACAR);
         }
     }
@@ -31,15 +31,17 @@ public class ContaPoupanca extends ContaBancariaAbstrata{
         if (contaDestino.getInstituicaoBancaria().equals(this.getInstituicaoBancaria())) {
             taxa = valor * 0.005;
         }
-        setSaldo(super.getSaldo() - valor - taxa);
-        finalizarTransacao(valor,TipoTransacao.TRANSFERIR);
+        finalizarTransacao(valor+taxa,TipoTransacao.TRANSFERIR);
+        setSaldo(this.getSaldo() - valor - taxa);
         imprimirTaxas(taxa, TipoTransacao.TRANSFERIR);
         contaDestino.depositar(valor);
     }
+
 
     private void validarInstituicao() {
         if (super.getInstituicaoBancaria().equals(InstituicaoBancaria.NUBANK)) {
             throw new InstituicaoInvalidaException("Este banco não permite criação de conta poupança.");
         }
     }
+
 }
